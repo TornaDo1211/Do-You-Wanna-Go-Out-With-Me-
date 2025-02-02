@@ -4,30 +4,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
-    background-color: #fff5f5; 
+    height: 100vh;
+    background-color: #fff5f5;
     font-family: 'Indie Flower', cursive;
-    overflow: visible; /* Allow overflow so hearts don't get clipped */
+    overflow: visible;
 }
 
 .container {
     text-align: center;
-    background-color: #ffebee; 
+    background-color: #ffebee;
     padding: 40px;
     border-radius: 20px;
-    border: 3px solid #ff6b81; 
-    box-shadow: 0 8px 20px rgba(255, 107, 129, 0.3); 
-    max-width: 600px; 
-    width: 90%; 
-    position: relative; 
+    border: 3px solid #ff6b81;
+    box-shadow: 0 8px 20px rgba(255, 107, 129, 0.3);
+    max-width: 600px;
+    width: 90%;
+    position: relative;
 }
 
 .header_text {
     font-size: 50px;
     font-weight: bold;
-    color: #ff6b81; 
+    color: #ff6b81;
     margin: 20px 0;
-    text-shadow: 2px 2px 4px rgba(255, 107, 129, 0.2); 
+    text-shadow: 2px 2px 4px rgba(255, 107, 129, 0.2);
 }
 
 .gif_container {
@@ -40,41 +40,59 @@ body {
 .gif_container img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 
-@keyframes heartFade {
-    0% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0; transform: scale(1.5); }
+.buttons {
+    margin-top: 20px;
 }
 
-.heart {
+.btn {
+    padding: 12px 24px;
+    font-size: 20px;
+    border: 2px solid #ff6b81;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #ff6b81;
+    color: white;
+    font-family: 'Indie Flower', cursive;
+    box-shadow: 0 4px 10px rgba(255, 107, 129, 0.3);
+}
+
+.btn:hover {
+    background-color: white;
+    color: #ff6b81;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 107, 129, 0.4);
+}
+
+#noButton {
+    background-color: #ff4757;
+    border-color: #ff4757;
+}
+
+#noButton:hover {
+    background-color: white;
+    color: #ff4757;
+}
+
+.dot {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    transform: translate(-50%, -50%) rotate(-45deg);
-    animation: heartFade 1s ease-out forwards;
-    position: relative; 
-}
-
-
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: red;
+    width: 10px;
+    height: 10px;
+    background-color: #ff6b81;
+    animation: dotFade 1s ease-out forwards;
     border-radius: 50%;
 }
 
-.heart::before {
-    top: -10px;
-    left: 0;
-}
-
-.heart::after {
-    top: 0;
-    left: 10px;
+@keyframes dotFade {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
 }
