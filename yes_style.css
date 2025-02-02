@@ -7,7 +7,7 @@ body {
     height: 100vh; 
     background-color: #fff5f5; 
     font-family: 'Indie Flower', cursive;
-    overflow: hidden; 
+    overflow: visible; /* Allow overflow so hearts don't get clipped */
 }
 
 .container {
@@ -19,6 +19,7 @@ body {
     box-shadow: 0 8px 20px rgba(255, 107, 129, 0.3); 
     max-width: 600px; 
     width: 90%; 
+    position: relative; 
 }
 
 .header_text {
@@ -42,3 +43,38 @@ body {
     border-radius: 10px; 
 }
 
+@keyframes heartFade {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.5); }
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    animation: heartFade 1s ease-out forwards;
+    position: relative; 
+}
+
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 10px;
+}
