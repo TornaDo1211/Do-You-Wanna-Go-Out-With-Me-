@@ -3,36 +3,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const noButton = document.querySelector('#noButton');
 
     yesButton.addEventListener('click', () => {
-        alert('You clicked Yes!');
+        yesButton.textContent = 'Are you sure? 😍';
+        yesButton.addEventListener('click', () => {
+            window.location.href = 'yes.html';
+        });
     });
 
-    noButton.addEventListener('mouseover', moveButton);
+    const noTexts = [
+        "Are you really sure? 😢",
+        "Think again... 💔",
+        "Please reconsider 😭",
+        "You might regret this... 😔",
+        "Final answer? 😟"
+    ];
+    let clickCount = 0;
+
+    noButton.addEventListener('click', () => {
+        if (clickCount < noTexts.length) {
+            noButton.textContent = noTexts[clickCount];
+            clickCount++;
+        } else {
+            window.location.href = 'no.html';
+        }
+    });
 });
-
-function moveButton() {
-    const noButton = document.querySelector('#noButton');
-
-    const rect = noButton.getBoundingClientRect();
-    const oldX = rect.left + window.scrollX;
-    const oldY = rect.top + window.scrollY;
-
-    const maxX = window.innerWidth - noButton.offsetWidth;
-    const maxY = window.innerHeight - noButton.offsetHeight;
-
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
-
-    noButton.style.position = "absolute";
-    noButton.style.left = `${randomX}px`;
-    noButton.style.top = `${randomY}px`;
-
-    const dot = document.createElement('div');
-    dot.classList.add('dot');
-    dot.style.left = `${oldX}px`;
-    dot.style.top = `${oldY}px`;
-    document.body.appendChild(dot);
-
-    setTimeout(() => {
-        dot.remove();
-    }, 1000);
-}
